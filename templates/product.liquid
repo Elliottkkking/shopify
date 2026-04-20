@@ -1,0 +1,40 @@
+<div class="max-w-7xl mx-auto px-[40px] py-[32px]">
+  <nav class="flex items-center gap-[8px] text-[12px] font-medium text-textSecondary mb-[40px] tracking-[1px] uppercase">
+    <a href="{{ routes.root_url }}" class="hover:text-textMain transition-colors">Home</a> 
+    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+    <span class="hover:text-textMain transition-colors cursor-pointer">{{ product.type | default: 'Category' }}</span> 
+    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+    <span class="text-textMain border-b border-textMain pb-[2px]">{{ product.title }}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-[64px]">
+    <!-- Media Section -->
+    <div class="lg:col-span-7 space-y-[24px]">
+      <div class="relative aspect-[4/3] bg-[#f0f0f0] overflow-hidden group">
+        <img class="w-full h-full object-cover mix-blend-multiply" src="{{ product.featured_image | img_url: '1024x1024' }}" alt="{{ product.title }}"/>
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="lg:col-span-5 flex flex-col pt-[16px]">
+      <h1 class="text-[32px] font-semibold text-textMain tracking-tight mb-[16px] leading-[1.2] headline">{{ product.title }}</h1>
+      <div class="flex items-baseline gap-[16px] mb-[40px]">
+        <span class="text-[32px] font-medium text-textMain">{{ product.price | money }}</span>
+      </div>
+      <div class="text-[14px] text-textSecondary mb-[24px] leading-relaxed">
+        {{ product.description }}
+      </div>
+
+      <form action="/cart/add" method="post" enctype="multipart/form-data" class="py-[40px] space-y-[24px] border-t border-border">
+        <select name="id" class="w-full p-2 border border-border mb-4">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}>
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="w-full bg-accent text-white font-semibold uppercase text-[12px] tracking-[1px] py-[16px] px-[32px] hover:opacity-80 transition-opacity">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>

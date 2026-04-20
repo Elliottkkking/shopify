@@ -1,0 +1,27 @@
+<header class="sticky top-0 z-50 flex items-center justify-between px-[40px] py-[24px] w-full bg-white border-b border-border transition-all">
+  <a href="{{ routes.root_url }}" class="flex-none flex items-center">
+    <h1 class="text-2xl font-bold uppercase tracking-widest text-textMain">{{ shop.name }}</h1>
+  </a>
+  <nav class="hidden md:flex items-center gap-[32px]">
+    {% for link in linklists.main-menu.links %}
+      <a class="text-[12px] font-bold text-textMain hover:opacity-70 transition-colors pb-[4px] uppercase tracking-[1px]" href="{{ link.url }}">{{ link.title }}</a>
+    {% endfor %}
+  </nav>
+  <div class="flex items-center gap-[24px]">
+    <form action="{{ routes.search_url }}" method="get" class="hidden lg:flex items-center bg-surface border border-border px-[16px] py-[8px]">
+      <span class="material-symbols-outlined text-textSecondary text-[18px]">search</span>
+      <input type="text" name="q" class="bg-transparent border-none focus:ring-0 text-[12px] w-48 outline-none pl-2 text-textMain placeholder:text-textSecondary placeholder:tracking-[1px]" placeholder="SEARCH APPLIANCES...">
+    </form>
+    <div class="flex items-center gap-[16px]">
+      <a class="transition-opacity text-textMain hover:opacity-70 bg-transparent border-none cursor-pointer flex items-center relative" href="{{ routes.cart_url }}">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="absolute -top-1.5 -right-1.5 bg-accent text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">{{ cart.item_count }}</span>
+      </a>
+      {% if shop.customer_accounts_enabled %}
+        <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="transition-opacity text-textMain hover:opacity-70 bg-transparent border-none cursor-pointer">
+          <span class="material-symbols-outlined">person</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</header>

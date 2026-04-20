@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  {{ content_for_header }}
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN (For Shopify native theme without build process) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#ffffff',
+            surface: '#f8f8f8',
+            textMain: '#1a1a1a',
+            textSecondary: '#757575',
+            accent: '#000000',
+            border: '#eeeeee',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: white; color: #1a1a1a; }
+    .hero-aspect-ratio { aspect-ratio: 16 / 9; width: 100%; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  </style>
+</head>
+<body class="selection:bg-accent selection:text-white bg-bg text-textMain min-h-screen">
+  {% section 'header' %}
+  
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+  
+  {% section 'footer' %}
+</body>
+</html>
