@@ -1,0 +1,36 @@
+<section class="w-full bg-surface border-b border-border text-textMain py-4 px-8 flex flex-col md:flex-row items-center justify-center gap-5">
+  <span class="text-[13px] font-medium tracking-wide text-center">{{ section.settings.message }}</span>
+  <a href="{{ section.settings.link }}" class="text-[12px] font-medium border-b border-textMain hover:opacity-80 transition-opacity uppercase tracking-[1px]">{{ section.settings.link_text }}</a>
+</section>
+
+{% schema %}
+{
+  "name": "Promo Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Promo Message",
+      "default": "Spring Savings Are Here — Up to 20% Off Select Favorites"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Explore The Sale"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Strip",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

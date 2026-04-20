@@ -1,0 +1,160 @@
+{
+  "name": "Home page",
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "subheading": "Keep the comfort flowing",
+        "heading": "Comfort for\nevery season.",
+        "button_text": "Shop All"
+      }
+    },
+    "promo": {
+      "type": "promo-strip",
+      "settings": {
+        "message": "Spring Savings Are Here — Up to 20% Off Select Favorites"
+      }
+    },
+    "category_worlds": {
+      "type": "category-worlds",
+      "blocks": {
+        "cat1": {
+          "type": "category",
+          "settings": {
+            "title": "Air Conditioners",
+            "subtitle": "Shop Precision Cooling",
+            "link": "shopify:\/\/collections\/frontpage"
+          }
+        },
+        "cat2": {
+          "type": "category",
+          "settings": {
+            "title": "Fans & Airflow",
+            "subtitle": "Shop Sculptural Air",
+            "link": "shopify:\/\/collections\/frontpage"
+          }
+        },
+         "cat3": {
+          "type": "category",
+          "settings": {
+            "title": "Heating & Comfort",
+            "subtitle": "Shop Silent Warmth",
+            "link": "shopify:\/\/collections\/frontpage"
+          }
+        },
+        "cat4": {
+          "type": "category",
+          "settings": {
+            "title": "Outdoor Living",
+            "subtitle": "Shop The Exterior",
+            "link": "shopify:\/\/collections\/frontpage"
+          }
+        },
+        "cat5": {
+          "type": "category",
+          "settings": {
+            "title": "Kitchen Essentials",
+            "subtitle": "Shop Culinary Tech",
+            "link": "shopify:\/\/collections\/frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "cat1",
+        "cat2",
+        "cat3",
+        "cat4",
+        "cat5"
+      ]
+    },
+    "social": {
+      "type": "social-grid",
+      "blocks": {
+        "s1": {
+          "type": "social_post",
+          "settings": {
+             "handle": "@sarah_cooks",
+             "text": "My morning routine has never been this smooth. ✨ #tmwingslife"
+          }
+        },
+        "s2": {
+          "type": "social_post",
+           "settings": {
+             "handle": "@chef_marcus",
+             "text": "Crispy in 10 mins. TMWINGS Air Fryer is a game changer. 🍟"
+          }
+        },
+        "s3": {
+          "type": "social_post",
+           "settings": {
+             "handle": "@lifestyle_lucy",
+             "text": "Fresh air only. Can't believe I waited this long for a TMWINGS."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Best Sellers",
+        "limit": 4
+      }
+    },
+    "benefits": {
+      "type": "benefits-strip",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopping_bag",
+            "title": "Exclusive products, colors & deals",
+            "text": "Elevate your shopping experience with one-of-a-kind finds and exclusive deals available only here."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+           "settings": {
+            "icon": "verified_user",
+            "title": "90-day guarantee",
+            "text": "Shop with absolute confidence. If you're not satisfied, we offer a hassle-free 90-day return policy."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+           "settings": {
+            "icon": "local_shipping",
+            "title": "Free shipping on all orders",
+            "text": "We believe in transparent pricing. That's why every single order ships to your door for free."
+          }
+        },
+         "b4": {
+          "type": "benefit",
+           "settings": {
+            "icon": "app_registration",
+            "title": "Easy warranty registration",
+            "text": "At TMWINGS, we stand behind the quality and performance of every architectural piece we create."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "promo",
+    "category_worlds",
+    "social",
+    "best_sellers",
+    "benefits"
+  ]
+}

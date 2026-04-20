@@ -1,0 +1,76 @@
+<section class="py-[80px] px-[40px] bg-surface border-y border-border">
+  <div class="flex justify-between items-end mb-[48px]">
+    <div>
+      <h2 class="text-[32px] font-semibold tracking-tight headline text-textMain">{{ section.settings.heading }}</h2>
+    </div>
+    <a class="text-[14px] font-medium border-b border-textMain pb-[2px] text-textMain hover:opacity-80 transition-opacity" href="{{ section.settings.collection.url }}">View All Products</a>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[24px]">
+    {% assign collection = collections[section.settings.collection] %}
+    {% for product in collection.products limit: section.settings.limit %}
+      <a href="{{ product.url }}" class="group cursor-pointer bg-bg border border-border p-[20px] transition-colors hover:border-textSecondary">
+        <div class="relative aspect-square bg-[#f0f0f0] overflow-hidden mb-[24px] flex items-center justify-center p-[20px]">
+          <span class="absolute top-[10px] left-[10px] bg-bg text-textMain text-[11px] font-semibold uppercase tracking-[1px] px-[12px] py-[6px] border border-border z-10">Best Seller</span>
+          <img class="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 opacity-90" src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}">
+          <button class="absolute bottom-[20px] left-[20px] right-[20px] bg-accent text-white py-[14px] font-medium uppercase text-[12px] tracking-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Product</button>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex justify-between items-center mb-1">
+            <h4 class="font-semibold text-[15px] text-textMain">{{ product.title }}</h4>
+            <span class="font-medium text-[15px] text-textMain">{{ product.price | money }}</span>
+          </div>
+          <p class="text-textSecondary text-[12px] font-medium tracking-[1px] uppercase mt-2">{{ product.type }}</p>
+        </div>
+      </a>
+    {% else %}
+      {% for i in (1..section.settings.limit) %}
+        <div class="group cursor-pointer bg-bg border border-border p-[20px]">
+          <div class="relative aspect-square bg-gray-100 overflow-hidden mb-[24px] flex items-center justify-center">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'w-full h-full object-cover' }}
+          </div>
+          <div class="flex flex-col">
+            <div class="flex justify-between items-center mb-1">
+              <h4 class="font-semibold text-[15px] text-textMain">Demo Product {{ i }}</h4>
+              <span class="font-medium text-[15px] text-textMain">$199.00</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection to display"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "label": "Products to show",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Sellers Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

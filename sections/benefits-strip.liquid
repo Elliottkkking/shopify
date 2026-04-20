@@ -1,0 +1,78 @@
+<section class="py-[100px] px-[40px] bg-bg">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-[64px]">
+      <h2 class="text-[36px] font-semibold tracking-tight text-textMain headline mb-[16px]">{{ section.settings.heading }}</h2>
+      <span class="text-[14px] font-medium text-textSecondary">{{ section.settings.subheading }}</span>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[40px] lg:gap-[32px]">
+      {% for block in section.blocks %}
+        <div class="flex flex-col border-t border-border pt-[32px]">
+          <div class="mb-[24px]">
+            <span class="material-symbols-outlined text-textMain text-[32px]">{{ block.settings.icon }}</span>
+          </div>
+          <h4 class="text-[18px] font-semibold text-textMain mb-[16px]">{{ block.settings.title }}</h4>
+          <p class="text-textSecondary text-[14px] leading-relaxed">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop direct and unlock premium benefits"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Experience the difference when you buy directly from us."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Google Material Icon Name",
+          "default": "shopping_bag"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Description of the benefit goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Strip",
+      "category": "Text",
+      "blocks": [
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" }
+      ]
+    }
+  ]
+}
+{% endschema %}

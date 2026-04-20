@@ -1,15 +1,62 @@
 <section class="relative hero-aspect-ratio w-full overflow-hidden bg-surface h-[60vh] md:h-[80vh] border-b border-border">
   <div class="absolute inset-0 z-0 bg-black">
-    <div class="w-full h-full bg-black/30"></div>
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.heading }}" class="w-full h-full object-cover">
+    {% else %}
+      <div class="w-full h-full bg-black/30"></div>
+    {% endif %}
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
   </div>
   <div class="absolute bottom-16 left-6 md:left-12 lg:left-20 z-10 max-w-xl text-white">
-    <span class="text-[11px] font-extrabold uppercase tracking-[1px] text-white/80 mb-3 block">Keep the comfort flowing</span>
+    <span class="text-[11px] font-extrabold uppercase tracking-[1px] text-white/80 mb-3 block">{{ section.settings.subheading }}</span>
     <h1 class="font-extrabold mb-6 leading-[1.1] text-[48px] headline text-white drop-shadow-md">
-      Comfort for<br/>every season.
+      {{ section.settings.heading | newline_to_br }}
     </h1>
-    <a href="{{ routes.all_products_collection_url }}" class="inline-flex bg-white text-black px-[28px] py-[14px] font-bold text-[13px] tracking-[1px] uppercase items-center gap-3 transition-opacity hover:opacity-80">
-      Shop All <span class="material-symbols-outlined text-lg font-bold">arrow_forward</span>
+    <a href="{{ section.settings.button_link }}" class="inline-flex bg-white text-black px-[28px] py-[14px] font-bold text-[13px] tracking-[1px] uppercase items-center gap-3 transition-opacity hover:opacity-80">
+      {{ section.settings.button_text }} <span class="material-symbols-outlined text-lg font-bold">arrow_forward</span>
     </a>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Keep the comfort flowing"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Comfort for\nevery season."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
